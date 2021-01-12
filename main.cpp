@@ -135,7 +135,7 @@ double bt9(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, sum3=0.0, theta = 1.0e-9;
-   for(int j = 2; j <= n; j++)
+   for(int j = 3; j <= n; j++)
    {
       long double yj = x[j-1] - sin((j*M_PI)/(2.0*n));
       if((j%3)==0) sum1 += D1(yj, theta);
@@ -149,11 +149,11 @@ double bt9(vector<double> &x, vector<double> &f)
 int main()
 {
  srand(time(0));
-  vector<double>f(2), x(3); 
+  vector<double>f(3), x(3); 
   for(int i = 0 ; i <100000; i++)
   {
     for(auto &a:x) a = rand()/(double)RAND_MAX;
-    bt3(x, f);
+    bt9(x, f);
     for(auto &m:f)cout <<m<<" ";
     cout<<endl;
   }
