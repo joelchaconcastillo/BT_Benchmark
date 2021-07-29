@@ -22,8 +22,9 @@ long double S2(long double x,long double gamma)
    else if( x>=0.25 && x<0.5) return (1.0 + pow(4.0*x-1.0, gamma))/4.0;
    else if( x>=0.5 && x<0.75) return (3.0 - pow(3.0-4.0*x, gamma))/4.0;
    else if( x>=0.75 && x<=1.0) return (3.0 + pow(4.0*x-3.0, gamma))/4.0;
+   return 0.0;
 }
-double bt1(vector<double> &x, vector<double> &f)
+void bt1(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-10;
@@ -36,7 +37,7 @@ double bt1(vector<double> &x, vector<double> &f)
    f[0] = x[0] + sum1;
    f[1] = 1.0 - sqrt(x[0]) + sum2;
 }
-double bt2(vector<double> &x, vector<double> &f)
+void bt2(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0/5.0;
@@ -49,7 +50,7 @@ double bt2(vector<double> &x, vector<double> &f)
    f[0] = x[0] + sum1;
    f[1] = 1.0 - sqrt(x[0]) + sum2;
 }
-double bt3(vector<double> &x, vector<double> &f)
+void bt3(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-8;
@@ -62,7 +63,7 @@ double bt3(vector<double> &x, vector<double> &f)
    f[0] = S1(x[0], 0.02) + sum1;
    f[1] = 1.0 - sqrt(S1(x[0], 0.02)) + sum2;
 }
-double bt4(vector<double> &x, vector<double> &f)
+void bt4(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-8;
@@ -75,7 +76,7 @@ double bt4(vector<double> &x, vector<double> &f)
    f[0] = S2(x[0], 0.06) + sum1;
    f[1] = 1.0 - sqrt(S2(x[0], 0.06)) + sum2;
 }
-double bt5(vector<double> &x, vector<double> &f)
+void bt5(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-10;
@@ -88,7 +89,7 @@ double bt5(vector<double> &x, vector<double> &f)
    f[0] = x[0] + sum1;
    f[1] = (1.0 - x[0])*(1.0-x[0]*sin(8.5*M_PI*x[0])) + sum2;
 }
-double bt6(vector<double> &x, vector<double> &f)
+void bt6(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-4;
@@ -101,7 +102,7 @@ double bt6(vector<double> &x, vector<double> &f)
    f[0] = x[0] + sum1;
    f[1] = 1.0 - sqrt(x[0]) + sum2;
 }
-double bt7(vector<double> &x, vector<double> &f)
+void bt7(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-3;
@@ -118,7 +119,7 @@ long double Q(long double z)
 {
   return 4.0*z*z - cos(8.0*M_PI*z)+1.0;
 }
-double bt8(vector<double> &x, vector<double> &f)
+void bt8(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, theta = 1.0e-3;
@@ -131,7 +132,7 @@ double bt8(vector<double> &x, vector<double> &f)
    f[0] = x[0] + sum1;
    f[1] = 1.0 - sqrt(x[0]) + sum2;
 }
-double bt9(vector<double> &x, vector<double> &f)
+void bt9(vector<double> &x, vector<double> &f)
 {
    int n = x.size();
    long double sum1 = 0.0, sum2 = 0.0, sum3=0.0, theta = 1.0e-9;
@@ -148,7 +149,7 @@ double bt9(vector<double> &x, vector<double> &f)
 }
 int main()
 {
- srand(time(0));
+  srand(time(0));
   vector<double>f(3), x(3); 
   for(int i = 0 ; i <100000; i++)
   {
